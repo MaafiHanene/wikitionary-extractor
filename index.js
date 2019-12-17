@@ -10,7 +10,7 @@ axios.get("https://en.wiktionary.org/wiki/Category:Arabic_3-letter_roots")
         //console.log(response)
 
         let $ = cheerio.load(response.data);
-        $('.CategoryTreeItem').slice(71, 162).each((i, category) =>{
+        $('.CategoryTreeItem').slice(181, 204).each((i, category) =>{
             console.log(i);
             categories.push({
                 id: i,
