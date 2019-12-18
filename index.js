@@ -10,7 +10,7 @@ axios.get("https://en.wiktionary.org/w/index.php?title=Category:Arabic_3-letter_
         //console.log(response)
 
         let $ = cheerio.load(response.data);
-        $('.CategoryTreeItem').slice(0, 8).each((i, category) =>{
+        $('.CategoryTreeItem').slice(8, 88).each((i, category) =>{
             console.log(i);
             categories.push({
                 id: i,
