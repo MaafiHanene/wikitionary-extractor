@@ -5,12 +5,12 @@ const fs = require('fs')
 let categories = []
 let words = []
 let roots = []
-axios.get("https://en.wiktionary.org/w/index.php?title=Category:Arabic_3-letter_roots&subcatfrom=%D8%AB+%D9%85+%D8%B1%0AArabic+terms+belonging+to+the+root+%D8%AB+%D9%85+%D8%B1#mw-subcategories")
+axios.get("https://en.wiktionary.org/w/index.php?title=Category:Arabic_3-letter_roots&subcatfrom=%D8%B9+%D8%B3+%D9%84%0AArabic+terms+belonging+to+the+root+%D8%B9+%D8%B3+%D9%84#mw-subcategories")
     .then(function (response) {
         //console.log(response)
 
         let $ = cheerio.load(response.data);
-        $('.CategoryTreeItem').slice(8, 88).each((i, category) =>{
+        $('.CategoryTreeItem').slice(0, 100).each((i, category) =>{
             console.log(i);
             categories.push({
                 id: i,
