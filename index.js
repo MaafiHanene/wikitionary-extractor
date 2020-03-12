@@ -5,20 +5,21 @@ const fs = require('fs')
 let categories = []
 let words = []
 let roots = []
+//here we introduce the link of wikitionary page: example https://en.wiktionary.org/wiki/Category:Arabic_4-letter_roots
 axios.get("https://en.wiktionary.org/wiki/Category:Arabic_4-letter_roots")
     .then(function (response) {
         //console.log(response)
 
         let $ = cheerio.load(response.data);
+    
+        //Here we introduce the born inf and the born sup of the sample we want to extract ==> slice(born_inf, born_max)
         $('.CategoryTreeItem').slice(135, 136).each((i, category) =>{
-            console.log(i);
             categories.push({
                 id: i,
                 url: "https://en.wiktionary.org" + $(category).find('a').attr('href'),
             });
             axios.get(categories[i].url)
                 .then(function (response) {
-                    //console.log(response)
 
                     let $ = cheerio.load(response.data);
                     let text = $("#firstHeading i").text();
@@ -48,24 +49,11 @@ axios.get("https://en.wiktionary.org/wiki/Category:Arabic_4-letter_roots")
                             console.log('Saved data to file.')
                         })
 
-
                 }).catch(function(e) {
                 console.log(e)
 
             })
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
     });
 
